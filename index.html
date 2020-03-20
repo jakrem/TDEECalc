@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>How many calories should I eat?</title>
+</head>
+<body>
+  <header>
+    <div class="h1-header" id="header">How many calories should I eat?</div>
+  </header>
+  <div>
+    <div class="split left">
+      <form id="tdeeForm" onsubmit="return false">
+        <label>Select gender:</label>
+        <fieldset id="genderField" class="gender" name="ss-item-required">
+          <label><input value="female" name="gender" type="radio" required> Female</label>
+          <label><input value="male" name="gender" type="radio" required> Male</label>
+        </fieldset>
+        <label>Age (years): <input id="ageField" placeholder="Provide your age" type="number" class="inputfield" pattern="^[0-9]" min="1" name="ss-item-required" required></label>
+        <label>Weigth (kg): <input id="weigthField" placeholder="Provide your weigth" type="number" class="inputfield" pattern="^[0-9]" min="1" name="ss-item-required" required></label>
+        <label>Heigth (cm): <input id="heigthField" placeholder="Provide your heigth" type="number" class="inputfield" pattern="^[0-9]" min="1" name="ss-item-required" required></label>
+        <!-- TEA -->
+        <label>What kind of training do you perform?
+          <select id="trainingField" class="dropdown" onchange="trainingCheck(this);">
+            <option id="none" name="trainingType" value=0>None</option>
+            <option id="strength" name="trainingType" value="strength">Strength training (gym workout, fitness, calisthenics)</option>
+            <option id="endurance" name="trainingType" value="endurance">Endurance training (running, nordic walking)</option>
+          </select>
+        </label>
+        <div id="trainingTime" style="display:none;">
+          <label>Time of training (min): <input id="timeField" placeholder="Provide time of your training" class="inputfield" type="number" pattern="^[0-9]" min="1" require></label>
+        </div>
+        <div id="distanceTravelled" style="display:none;">
+          <label>Distance travelled (km): <input id="kilometersField" placeholder="Provide distance travelled" class="inputfield" type="number" pattern="^[0-9]" min="1" require></label>
+        </div>
+        <!-- TEA -->
+        <!-- TEF -->
+        <label>TEF (<span class="tooltip">What is TEF?<span class="tooltiptext tooltip-right">The thermic effect of food (TEF) is one of the components of metabolism along with resting metabolic rate and the exercise component. A commonly used estimate of the thermic effect of food is about 10% of one's caloric intake, though the effect varies substantially for different food components. For example, dietary fat is very easy to process and has very little thermic effect, while protein is hard to process and has a much larger thermic effect.</span></span>):
+          <select id="tefField" class="dropdown" name="ss-item-required" required>
+            <option name="empty"></option>
+            <option name="tef" value="0.06">6%</option>
+            <option name="tef" value="0.07">7%</option>
+            <option name="tef" value="0.08">8%</option>
+            <option name="tef" value="0.09">9%</option>
+            <option name="tef" value="0.1">10%</option>
+          </select>
+        </label>
+        <!-- TEF -->
+        <!-- NEAT -->
+        <label>NEAT (<span class="tooltip">What is NEAT?<span class="tooltiptext tooltip-right">Non-exercise activity thermogenesis (NEAT) is the energy expended for everything we do that is not sleeping, eating or sports-like exercise. It ranges from the energy expended walking to work, typing, performing yard work, undertaking agricultural tasks and fidgeting. Even trivial physical activities increase metabolic rate substantially and it is the cumulative impact of a multitude of exothermic actions that culminate in an individual's daily NEAT.</span></span>):
+          <select id="neatField" class="dropdown" name="ss-item-required" required>
+            <option name="empty"></option>
+            <option name="neat" value="200">Endomorphic on reduction (200 kcal)</option>
+            <option name="neat" value="400">Endomorphic on gain (400 kcal)</option>
+            <option name="neat" value="400">Mezomorphic on reduction (400 kcal)</option>
+            <option name="neat" value="500">Mezomorphic on gain (500 kcal)</option>
+            <option name="neat" value="700">Ektomorphic on reduction (700 kcal)</option>
+            <option name="neat" value="900">Ektomorphic on gain (900 kcal)</option>
+          </select>
+        </label>
+        <!-- NEAT -->
+        <input id="submitButton" class="submit" type="submit" value="Calculate">
+      </form>
+    </div>
+    <div class="split right">
+      <div class="h2-header"><p id="lastoutcome">No data</p></div>
+      <div class="h3-header"><p>History of calculations:</p></div>
+      <ul id="history"></ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
